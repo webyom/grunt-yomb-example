@@ -102,7 +102,7 @@ module.exports = function(grunt) {
 				outputBasePath: '<%=outputBasePath%>',
 				protect: ['src'],
 				lang: {
-					base: 'src/scripts/lang'
+					base: 'src/lang'
 				},
 				coffeeOptions: {
 					bare: false,
