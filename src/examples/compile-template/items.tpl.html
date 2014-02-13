@@ -1,0 +1,10 @@
+<%
+var $ = require('jquery');
+%>
+<%
+$.each(items, function(i, item) {
+%>
+	<li><%==item.name%></li>
+<%
+});
+%>

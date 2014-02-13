@@ -76,7 +76,7 @@ module.exports = function(grunt) {
 				buildTpl: false,
 				buildNodeTpl: false,
 				allowSrcOutput: true,
-				uglify: 0,
+				uglify: -1,
 				cssmin: false,
 				compressHtml: false,
 				/*
@@ -100,7 +100,7 @@ module.exports = function(grunt) {
 				*/
 				compressHtmlOptions: '--remove-script-attr',
 				outputBasePath: '<%=outputBasePath%>',
-				protect: ['src'],
+				protect: [],
 				lang: {
 					base: 'src/lang'
 				},
@@ -130,8 +130,12 @@ module.exports = function(grunt) {
 						src: 'src',
 						dest: 'dist',
 						ignore: {
-							'lib/jquery': 1
+							'examples/same-folder-output': 1
 						}
+					},
+					{
+						src: 'src/examples/same-folder-output',
+						dest: 'src/examples/same-folder-output'
 					}
 				]
 			},
