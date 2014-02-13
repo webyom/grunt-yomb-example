@@ -157,6 +157,10 @@ module.exports = function(grunt) {
 						dest: 'dist/lang'
 					},
 					{
+						src: 'src/lib/yom-require',
+						dest: 'dist/lib/yom-require'
+					},
+					{
 						src: 'src',
 						dest: 'dist',
 						includeRegexp: '(\\.jpg|\\.jpeg|\\.gif|\\.png|\\.ico|\\.otf|\\.eot|\\.svg|\\.ttf|\\.woff|-min\\.css)$',

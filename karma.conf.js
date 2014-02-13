@@ -11,7 +11,7 @@ module.exports = function(config) {
       {pattern: 'tests/spec/**/*.js', included: false},
       'tests/include/header.js',
       'tests/include/require-config.js',
-      'tests/include/require.js',
+      'dist/lib/yom-require/require.js',
       'tests/include/main.js'
     ],
 

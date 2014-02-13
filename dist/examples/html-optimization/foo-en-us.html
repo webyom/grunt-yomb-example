@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>hello</title>
+<script type="text/javascript" src="../../lib/yom-require/require.js"></script>
+</head>
+<body>
+<div id="foo-div"></div>
+<div id="bar-div"></div>
+
+<script type="text/javascript">
+define("../../lang/en-us/foo", [ "require", "exports", "module" ], {
+    label: {
+        foo: "hello"
+    }
+});
+
+require.processDefQueue("", require.PAGE_BASE_URL, require.getBaseUrlConfig(require.PAGE_BASE_URL));
+</script>
+
+<script type="text/javascript">
+define("./foo.tpl.html", [ "require", "exports", "module", "jquery" ], function(require, exports, module) {
+    function $encodeHtml(str) {
+        return (str + "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/`/g, "&#96;").replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+    }
+    exports.render = function($data, $opt) {
+        $data = $data || {};
+        var _$out_ = [];
+        var $print = function(str) {
+            _$out_.push(str);
+        };
+        (function() {
+            with ($data) {
+                var $ = require("jquery");
+                $.each(items, function(i, item) {
+                    _$out_.push("<li>", item.name, "</li>");
+                });
+            }
+        })();
+        return _$out_.join("");
+    };
+});
+
+define("./foo", [ "require", "exports", "module", "jquery", "./foo.tpl.html" ], function(require, exports, module) {
+    (function() {
+        var $, foo;
+        $ = require("jquery");
+        foo = {};
+        foo.bar = function() {
+            var data, tpl;
+            tpl = require("./foo.tpl.html");
+            data = [ {
+                name: "foo"
+            }, {
+                name: "bar"
+            } ];
+            return $("#bar-div").html(tpl.render(data));
+        };
+        module.exports = foo;
+    }).call(this);
+});
+
+require.processDefQueue("", require.PAGE_BASE_URL, require.getBaseUrlConfig(require.PAGE_BASE_URL));
+</script>
+
+<script type="text/javascript">
+require([ "html-optimization/foo" ], function(foo) {
+    foo.bar();
+}, function() {
+    alert("load error");
+});
+</script>
+</body>
+</html>
