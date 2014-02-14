@@ -7,12 +7,12 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'dist/**/*.js', included: false},
-      {pattern: 'tests/spec/**/*.js', included: false},
       'tests/include/header.js',
       'tests/include/require-config.js',
       'dist/lib/yom-require/require.js',
-      'tests/include/main.js'
+      'tests/include/main.js',
+      {pattern: 'dist/**/*.js', included: false},
+      {pattern: 'tests/spec/**/*.js', included: false}
     ],
 
     // list of files to exclude
